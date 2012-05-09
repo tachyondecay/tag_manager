@@ -1,6 +1,6 @@
 # Tag Manager
 
-Provides a convenient interface for bulk editing tag list fields. This extension only works with tag list fields that are populated from existing values, as opposed to fields that are populated from other sections.
+Provides a convenient interface for bulk editing tag list fields.
 
 With Tag Manager, you can:
 - Edit the value of a tag and have this change reflected across every entry in the section with that tag.
@@ -13,6 +13,7 @@ With Tag Manager, you can:
 
 - Test, test, test
 - Figure out the best way of exposing the extension to the backend (i.e., in the navigation or on the section's publish page)
+- Paginate?
 
 ## Installation & Use
 

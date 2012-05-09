@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension id="tag_manager" status="experimental" xmlns="http://symphony-cms.com/schemas/extension/1.0">
 	<name>Tag Manager</name>
-	<description>Bulk edit entries in tag list fields that draw from existing values. Merge, delete, and update values.</description>
+	<description>Merge, delete, and update tags across all the entries in a section.</description>
 	<repo type="github">https://github.com/tachyondecay/tag_manager</repo>
 
 	<types>

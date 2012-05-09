@@ -130,8 +130,7 @@
 
 		protected function __viewSection($id) {
 			// Check if there are appropriate taglist fields
-			$fields = FieldManager::fetch(null, $id, 'ASC', 'sortorder', 'taglist', null);
-			$this->_fieldList = array_filter($fields, array($this, 'filter_fields'));
+			$this->_fieldList = FieldManager::fetch(null, $id, 'ASC', 'sortorder', 'taglist', null);
 
 			if(empty($this->_fieldList)) {
 				Administration::instance()->customError(__('No Appropriate Tag Fields'), __('The Section you specified, <code>%s</code>, does not have any tag fields populated by existing values. (These are the only types of tag fields compatible with Tag Manager at this time.)', array($handle)));
@@ -155,10 +154,5 @@
 			$table_body = Widget::TableBody($table_rows);
 
 			$this->Form->appendChild(Widget::Table($table_head, null, $table_body));
-		}
-
-		protected function filter_fields($field) {
-			$prepop = $field->get('pre_populate_source');
-			return($prepop[0] == 'existing');
 		}
 	}
