@@ -14,11 +14,6 @@ With Tag Manager, you can:
 - Test, test, test
 - Figure out the best way of exposing the extension to the backend (i.e., in the navigation or on the section's publish page)
 
-- Version: 0.1
-- Author: Ben Babcock <ben@tachyondecay.net>
-- Updated: May 9, 2012
-- GitHub Repository: https://github.com/tachyondecay/tag_manager
-
 ## Installation & Use
 
 You can always install the latest version through git: `git clone git://github.com/tachyondecay/tag_manager.git`
