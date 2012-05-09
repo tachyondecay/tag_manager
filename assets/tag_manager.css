@@ -1,0 +1,20 @@
+table.selectable input.tag-manager {
+	display: inline;
+	float: none;
+	margin: 0 auto;
+}
+
+table.selectable input.tag-manager-name {
+	width: auto;
+}
+
+div.tag-manager-edit {
+	position: relative;
+}
+
+span.tag-manager-success {
+	position: absolute;
+	color: green;
+	font-weight: bold;
+	right: 0;
+}
