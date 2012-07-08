@@ -8,6 +8,7 @@
 		protected $_field = null;
 		protected $_fieldList = null;
 		protected $_section = null;
+		protected $_subheading = null;
 		protected $_url = null;
 
 		public function build($context) {
@@ -23,6 +24,7 @@
 			$this->_section = SectionManager::fetch($id);
 
 			$this->_url = SYMPHONY_URL . '/extension/tag_manager/edit/' . $handle . '/';
+
 			if(!empty($this->_context[1]) && is_numeric($this->_context[1])) {
 				$this->_url .= $this->_context[1] . '/';
 
@@ -68,6 +70,7 @@
 		}
 
 		public function view() {
+			$this->insertBreadcrumbs(array(Widget::Anchor(__('Tag Manager'), SYMPHONY_URL . '/extension/tag_manager/')));
 			if(isset($this->_context[2])) {
 				$message = __('Tags successfully ' . $this->_context[2] . '.');
 				if(!empty($message)) { 
@@ -86,7 +89,8 @@
 		protected function __viewEdit() {
 			$this->setPageType('table');
 			$this->setTitle(__('Tag Manager') . ' &ndash; ' . $this->_section->get('name') . ' &ndash; ' . __('Tag Field') . ': ' . $this->_field->get('label') . ' &ndash; ' . __('Symphony'));
-			$this->appendSubheading(__('Section') . ': ' . $this->_section->get('name') . ' &raquo; ' . __('Tag Field') . ': ' . $this->_field->get('label'));
+			$this->insertBreadcrumbs(array(Widget::Anchor(__('Section') . ': ' . $this->_section->get('name'), SYMPHONY_URL . '/extension/tag_manager/edit/' . $this->_section->get('handle'))));
+			$this->appendSubheading(__('Tag Field') . ': ' . $this->_field->get('label'));
 
 			$tags = Symphony::Database()->fetch(sprintf("SELECT COUNT(id) AS freq, `value`, `handle` FROM tbl_entries_data_%d GROUP BY `value` ORDER BY %s %s", $this->_field->get('id'), 'value', 'ASC'));
 
@@ -133,12 +137,12 @@
 			$this->_fieldList = FieldManager::fetch(null, $id, 'ASC', 'sortorder', 'taglist', null);
 
 			if(empty($this->_fieldList)) {
-				Administration::instance()->customError(__('No Appropriate Tag Fields'), __('The Section you specified, <code>%s</code>, does not have any tag fields populated by existing values. (These are the only types of tag fields compatible with Tag Manager at this time.)', array($handle)));
+				Administration::instance()->customError(__('No Appropriate Tag Fields'), __('The Section you specified, <code>%s</code>, does not have any taglist fields.', array($handle)));
 			}
 
 			$this->setPageType('table');
 			$this->setTitle(__('Tag Manager') . ' &ndash; ' . $this->_section->get('name') . ' &ndash; ' . __('Symphony'));
-			$this->appendSubheading(__('Taglist Fields for ') . $this->_section->get('name'));
+			$this->appendSubheading(__('Section') . ': ' . $this->_section->get('name'));
 
 			$table_rows = array();
 			foreach($this->_fieldList as $field) {

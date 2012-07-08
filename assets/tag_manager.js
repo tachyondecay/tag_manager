@@ -1,4 +1,8 @@
 jQuery(document).ready(function($) {
+	if($('table.selectable th.field-taglist').size() > 0) {
+		$('body.index ul.actions').prepend('<a class="button" title="Manage Tags" href="' + Symphony.Context.get('root') + '/symphony/extension/tag_manager/edit/' + Symphony.Context.get('env').section_handle + '">Manage Tags</a>');
+	}
+
 	$('div.tag-manager-edit').each(function() {
 		$(this).append('<input type="submit" class="tag-manager" value="Cancel"/>').children().hide();
 		$(this).prepend('<a href="#" title="Click to edit this tag">' + $(this).children('.tag-manager-name').val() + '</a>');

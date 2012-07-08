@@ -22,4 +22,14 @@
 				Administration::instance()->Page->addScriptToHead(URL . '/extensions/tag_manager/assets/tag_manager.js', 200, false);
 			}
 		}
+
+		public function fetchNavigation() {
+			return array(
+				array(
+					'name' => 'Tag Manager',
+					'location' => __('Blueprints'),
+					'link' => '',
+				)
+			);
+		}
 	}
