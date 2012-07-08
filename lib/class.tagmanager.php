@@ -20,6 +20,17 @@
 					"`handle` = '" . Symphony::Database()->cleanValue($tag) . "'"
 				);
 			}
+
+			// Clean up duplicate tags on an entry caused by the merge
+			$duplicates = Symphony::Database()->fetch(sprintf(
+					"SELECT id, entry_id, value FROM tbl_entries_data_%d a WHERE value = '%s' GROUP BY entry_id HAVING count(value) > 1", 
+					$field_id, 
+					$primary_value
+				));
+			
+			foreach($duplicates as $dup) {
+				Symphony::Database()->delete('tbl_entries_data_' . $field_id, '`id` = ' . $dup['id']);
+			}
 		}
 
 		public static function update($field_id, $old_handle, $new_value) {
