@@ -10,7 +10,7 @@
 
 		public static function merge($field_id, $tags) {
 			sort($tags);
-			$primary_handle = Symphony::Database()->cleanValue(array_shift($tags));
+			$primary_handle = Symphony::Database()->cleanValue($tags[0]);
 
 			$primary_value = Symphony::Database()->fetchVar('value', 0, sprintf("SELECT `value` FROM tbl_entries_data_%d WHERE `handle` = '%s' LIMIT 1", $field_id, $primary_handle));
 			foreach($tags as $tag) {
