@@ -146,11 +146,12 @@
 
 			$table_rows = array();
 			foreach($this->_fieldList as $field) {
-				$result = Symphony::Database()->fetchCol('COUNT(id)', sprintf("SELECT COUNT(id) FROM tbl_entries_data_%d", $field->get('id')));
+				$result = Symphony::Database()->fetchCol('value', sprintf("SELECT value FROM tbl_entries_data_%d GROUP BY value", $field->get('id')));
+				$count = count($result);
 
 				$table_rows[] = Widget::TableRow(array(
 							Widget::TableData(Widget::Anchor($field->get('label'), $field->get('id') . '/'), 'field-taglist', 'field-' . $field->get('id')),
-							Widget::TableData($result[0]),
+							Widget::TableData($count),
 						));
 			}
 
