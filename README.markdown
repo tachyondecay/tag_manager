@@ -7,9 +7,9 @@ With Tag Manager, you can:
 - Delete any tag from all entries in a section.
 - Merge two or more tags.
 
-- Version: 1.0
+- Version: 1.0.1
 - Author: Ben Babcock <ben@tachyondecay.net>
-- Updated: July 8, 2012
+- Updated: December 31, 2012
 - GitHub Repository: https://github.com/tachyondecay/tag_manager
 
 ## Installation & Use
@@ -25,6 +25,10 @@ You can always install the latest version through git: `git clone git://github.c
 - Click on a tag to edit its value. To merge or delete one or more tags, select the appropriate rows and use the "With Selected" menu to select the appropriate action.
 
 ## Changelog
+
+### 1.0.1 (December 31, 2012)
+
+- Added Russian translation, courtesy [alexbirukov](https://github.com/alexbirukov)
 
 ### 1.0 (July 8, 2012)
 
