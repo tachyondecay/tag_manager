@@ -114,7 +114,15 @@
 			$table_head = Widget::TableHead(array(array(__('Tags'), 'col'), array(__('Frequency'), 'col')));
 			$table_body = Widget::TableBody($table_rows);
 
-			$this->Form->appendChild(Widget::Table($table_head, null, $table_body, 'selectable'));
+			$table = Widget::Table(
+				$table_head,
+				NULL,
+				$table_body,
+				'selectable',
+				null,
+				array('role' => 'directory', 'aria-labelledby' => 'symphony-subheading', 'data-interactive' => 'data-interactive')
+			);
+			$this->Form->appendChild($table);
 
 			$options = array(
 				array(null, false, 'With Selected...'),
