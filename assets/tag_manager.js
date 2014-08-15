@@ -23,6 +23,7 @@ jQuery(document).ready(function($) {
 		var oldHandle = $(this).attr('data-handle');
 		var newValue = $(this).prev().val();
 		var fieldId = Symphony.Context.get('env')[1];
+		var xsrfToken = $(this).parents('form').children('input[name="xsrf"]').val();
 
 		if(newValue.length == 0) {
 			alert('New tag name cannot be empty.');
@@ -36,7 +37,8 @@ jQuery(document).ready(function($) {
 				data: {
 					oldHandle: oldHandle,
 					newValue: newValue,
-					fieldId: fieldId
+					fieldId: fieldId,
+					xsrf: xsrfToken
 				},
 				success: function(xml) {
 					if($(xml).find('status').text() == 'true') {
@@ -46,6 +48,9 @@ jQuery(document).ready(function($) {
 					} else {
 						alert('Oops! Something went wrong.');
 					}
+				},
+				error: function(requestObj, status, errorMsg) {
+					alert('Oops! ' + errorMsg);
 				},
 				cache: false
 			});
